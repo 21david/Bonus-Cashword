@@ -79,7 +79,23 @@ public class BonusCashword {
 	}
 
     public void go() {
-    	frame.setIconImage(new ImageIcon("BC_logo.png").getImage());
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/BC_logo.png"));
+        try {  // Set the dock icon for macOS
+            try {
+                // Try Java 9+ Taskbar API
+                Class<?> taskbarClass = Class.forName("java.awt.Taskbar");
+                Object taskbar = taskbarClass.getMethod("getTaskbar").invoke(null);
+                taskbarClass.getMethod("setIconImage", Image.class).invoke(taskbar, icon.getImage());
+            } catch (Exception e) {
+                // Fallback for macOS Java 8
+                try {
+                    Class<?> appClass = Class.forName("com.apple.eawt.Application");
+                    Object app = appClass.getMethod("getApplication").invoke(null);
+                    appClass.getMethod("setDockIconImage", Image.class).invoke(app, icon.getImage());
+                } catch (Exception ignored) {}
+            }
+        } catch (Exception ignored) {}
+        frame.setIconImage(icon.getImage());
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.setSize(545,650);
     	frame.setVisible(true);
