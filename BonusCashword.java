@@ -1,6 +1,7 @@
 /*
  * Created July 16, 2014.
  * @author David Espinosa
+ * https://www.github.com/21david
  * I am not affiliated with Texas Lottery in any way and
  * am not trying to make profit from this.
  */
@@ -12,6 +13,10 @@
  * -> add menu bar
  * -> play sound when a word if found
  * -> fix duplicate word winner glitch
+ * -> Add copyright, github, and info about me
+ * -> Add links to where to buy real tickets
+ * -> Optimize by using HashSet instead of ArrayList
+ * -. Advanced features: Enable OCR for scanning the letters and crosswords
  */
 
 import static java.lang.System.out;
