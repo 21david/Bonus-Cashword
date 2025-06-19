@@ -43,7 +43,7 @@ public class BonusCashword {
 	int editX, editY;
 
     public static void main(String[] args) {
-    	new BonusCashword().go();
+        SwingUtilities.invokeLater(() -> new BonusCashword().go());
     }
     
 	public BonusCashword() {
